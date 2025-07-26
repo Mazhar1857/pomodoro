@@ -1,0 +1,54 @@
+.progress-clock {
+  filter: drop-shadow(-50px -50px 100px #272c5a)
+    drop-shadow(50px 50px 100px #121530);
+  .first-circle {
+    width: 410px;
+    height: 410px;
+    border-radius: 100vmax;
+    background: linear-gradient(to right, #0e112a, #2e325a);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .second-circle {
+    width: 366px;
+    height: 366px;
+    border-radius: 100vmax;
+    background-color: #161932;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .third-circle {
+    width: 339px;
+    height: 339px;
+    border-radius: 100vmax;
+    background: conic-gradient(#f87070 0% 80%, transparent 80% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .top-circle {
+    width: 312px;
+    height: 312px;
+    border-radius: 100vmax;
+    background-color: #161932;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+      color: whitesmoke;
+      font-size: 100px;
+    }
+    > p {
+      color: whitesmoke;
+      font-size: 16px;
+      letter-spacing: 15px;
+    }
+  }
+}

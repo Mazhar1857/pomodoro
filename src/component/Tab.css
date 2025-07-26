@@ -1,0 +1,36 @@
+.tab {
+  width: 380px;
+  height: 63px;
+  padding: 10px 7.5px;
+  background-color: #161932;
+  border-radius: 100vmax;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+
+  .btn {
+    width: 120px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100vmax;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .title {
+    background-color: #f87070;
+    color: #1e213f;
+  }
+  .short-break {
+    color: #d7e0ff;
+    opacity: 0.4;
+  }
+  .long-break {
+    color: #d7e0ff;
+    opacity: 0.4;
+  }
+}

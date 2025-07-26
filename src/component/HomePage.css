@@ -1,0 +1,17 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo {
+    margin-top: 48px;
+  }
+  .tab-component {
+    margin-block: 56px 36px;
+  }
+  .setting-icon {
+    margin-block: 64px 55px;
+    position: relative;
+    z-index: 10;
+  }
+}
