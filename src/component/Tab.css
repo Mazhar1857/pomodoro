@@ -22,7 +22,7 @@
   }
 
   .title {
-    background-color: #f87070;
+    background-color: var(--color);
     color: #1e213f;
   }
   .short-break {
