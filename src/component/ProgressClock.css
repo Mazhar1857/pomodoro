@@ -1,6 +1,7 @@
 .progress-clock {
   filter: drop-shadow(-50px -50px 100px #272c5a)
     drop-shadow(50px 50px 100px #121530);
+  font-family: var(--font);
   .first-circle {
     width: 410px;
     height: 410px;
@@ -49,6 +50,7 @@
       color: whitesmoke;
       font-size: 16px;
       letter-spacing: 15px;
+      font-family: inherit;
     }
   }
 }

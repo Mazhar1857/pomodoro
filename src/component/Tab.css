@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 10;
+  font-family: var(--font);
 
   .btn {
     width: 120px;

@@ -5,6 +5,7 @@
   padding-inline: 36px;
   border-radius: 25px;
   position: relative;
+  font-family: var(--font);
 
   .setting {
     display: flex;
@@ -63,6 +64,7 @@
             padding-inline: 16px 62px;
             font-size: 13px;
             letter-spacing: 5px;
+            font-family: inherit;
           }
           input:focus {
             outline: 1px solid #7e8086;
@@ -108,18 +110,13 @@
         border-radius: 100vmax;
         font-size: 16px;
         font-weight: bold;
+        background-color: #eff1fa;
+        color: #1e213f;
       }
-      > div:nth-child(1) {
+
+      .active {
         background-color: #161932;
         color: white;
-      }
-      > div:nth-child(2) {
-        background-color: #eff1fa;
-        color: #1e213f;
-      }
-      > div:nth-child(3) {
-        background-color: #eff1fa;
-        color: #1e213f;
       }
     }
   }
@@ -173,5 +170,6 @@
     font-weight: bold;
     left: calc(50% - 70px);
     bottom: -27px;
+    font-family: inherit;
   }
 }

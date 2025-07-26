@@ -6,13 +6,19 @@ import UpArrowIcon from "../svg components/UpArrowIcon";
 import DownArrowIcon from "../svg components/DownArrowIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { themeSliceAction } from "../store/themeSlice";
+import fontSlice, { fontSliceAction } from "../store/fontSlice";
 
 const Setting = () => {
   const theme = useSelector((store) => store.theme);
+  const font = useSelector((store) => store.font);
   const dispatch = useDispatch();
 
   const handleTheme = (color) => {
     dispatch(themeSliceAction.toggleTheme(color));
+  };
+
+  const handleFont = (font) => {
+    dispatch(fontSliceAction.toggleFont(font));
   };
 
   return (
@@ -63,9 +69,24 @@ const Setting = () => {
       <div className="font">
         <h2>FONT</h2>
         <div>
-          <div>Aa</div>
-          <div>Aa</div>
-          <div>Aa</div>
+          <div
+            className={`${font.active === "kumbh sans" ? "active" : ""}`}
+            onClick={() => handleFont("kumbh sans")}
+          >
+            Aa
+          </div>
+          <div
+            className={`${font.active === "roboto" ? "active" : ""}`}
+            onClick={() => handleFont("roboto")}
+          >
+            Aa
+          </div>
+          <div
+            className={`${font.active === "space mono" ? "active" : ""}`}
+            onClick={() => handleFont("space mono")}
+          >
+            Aa
+          </div>
         </div>
       </div>
       <div className="hr"></div>
