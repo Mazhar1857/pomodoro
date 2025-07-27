@@ -1,9 +1,5 @@
 .settings {
-  width: 540px;
-  height: 464px;
   background-color: #ffffff;
-  padding-inline: 36px;
-  border-radius: 25px;
   position: relative;
   font-family: var(--font);
 
@@ -11,16 +7,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 24px;
     font-weight: bold;
-    margin-block: 33px 32px;
-    max-height: 35px;
   }
 
   .hr.first {
-    width: 540px;
     position: relative;
-    left: -36px;
   }
 
   .hr {
@@ -29,27 +20,19 @@
   }
 
   .time {
-    margin-block: 32px 24px;
-    height: 103px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+
     > h2 {
-      font-size: 13px;
-      letter-spacing: 5px;
       font-weight: bold;
     }
     > div {
       display: flex;
-      justify-content: space-between;
 
       > div {
         display: flex;
-        flex-direction: column;
-        gap: 8px;
+
         > p {
           color: #1e213f;
-          font-size: 12px;
           font-weight: bold;
           opacity: 0.4;
         }
@@ -57,26 +40,23 @@
           position: relative;
           input {
             border: none;
-            width: 140px;
-            height: 48px;
             background-color: #eff1fa;
-            border-radius: 10px;
-            padding-inline: 16px 62px;
-            font-size: 13px;
-            letter-spacing: 5px;
             font-family: inherit;
           }
+
           input:focus {
             outline: 1px solid #7e8086;
           }
+
           .arrow-btn {
-            width: 12px;
             position: absolute;
-            right: 12px;
-            top: 12px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+          }
+
+          input:hover,
+          .arrow-btn:hover {
+            cursor: pointer;
           }
         }
       }
@@ -84,14 +64,9 @@
   }
 
   .font {
-    margin-block: 24px;
-    max-height: 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+
     > h2 {
-      font-size: 13px;
-      letter-spacing: 5px;
       font-weight: bold;
       color: #161932;
     }
@@ -99,19 +74,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 16px;
 
       > div {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 40px;
         border-radius: 100vmax;
-        font-size: 16px;
         font-weight: bold;
         background-color: #eff1fa;
         color: #1e213f;
+      }
+      > div:hover {
+        cursor: pointer;
       }
 
       .active {
@@ -122,29 +96,20 @@
   }
 
   .color {
-    margin-block: 24px 51px;
-    max-height: 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    > h2 {
-      font-size: 13px;
-      letter-spacing: 5px;
-    }
+
     .inactive > * {
       display: none;
     }
     > div {
       display: flex;
-      gap: 16px;
 
       > div {
-        width: 40px;
-        height: 40px;
         border-radius: 100vmax;
         display: flex;
-        justify-content: center;
-        align-items: center;
+      }
+      > div:hover {
+        cursor: pointer;
       }
       > div:nth-child(1) {
         background-color: #f87070;
@@ -161,15 +126,359 @@
   .apply-btn {
     position: absolute;
     background-color: var(--color);
-    width: 140px;
-    height: 54px;
     border-radius: 100vmax;
     border: none;
-    font-size: 16px;
     color: white;
     font-weight: bold;
-    left: calc(50% - 70px);
-    bottom: -27px;
     font-family: inherit;
+  }
+
+  .apply-btn:hover {
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 770px) {
+  .settings {
+    width: 540px;
+    height: 464px;
+    padding-inline: 36px;
+    border-radius: 25px;
+
+    .setting {
+      font-size: 24px;
+      margin-block: 33px 32px;
+      max-height: 35px;
+    }
+
+    .hr.first {
+      width: 540px;
+      left: -36px;
+    }
+
+    .time {
+      flex-direction: column;
+      margin-block: 32px 24px;
+      height: 103px;
+      gap: 16px;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        justify-content: space-between;
+
+        > div {
+          flex-direction: column;
+          gap: 8px;
+
+          > p {
+            font-size: 12px;
+          }
+          > div {
+            input {
+              width: 140px;
+              height: 48px;
+              border-radius: 10px;
+              padding-inline: 16px 62px;
+              font-size: 13px;
+              letter-spacing: 5px;
+            }
+            .arrow-btn {
+              width: 12px;
+              right: 12px;
+              top: 12px;
+              gap: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .font {
+      margin-block: 24px;
+      max-height: 40px;
+      justify-content: space-between;
+      align-items: center;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        gap: 16px;
+
+        > div {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .color {
+      margin-block: 24px 51px;
+      max-height: 40px;
+      justify-content: space-between;
+      align-items: center;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        gap: 16px;
+
+        > div {
+          width: 40px;
+          height: 40px;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .apply-btn {
+      width: 140px;
+      height: 54px;
+      font-size: 16px;
+      left: calc(50% - 70px);
+      bottom: -27px;
+    }
+  }
+}
+@media (min-width: 400px) and (max-width: 769px) {
+  .settings {
+    width: 540px;
+    height: 464px;
+    padding-inline: 36px;
+    border-radius: 25px;
+
+    .setting {
+      font-size: 24px;
+      margin-block: 33px 32px;
+      max-height: 35px;
+    }
+
+    .hr.first {
+      width: 540px;
+      left: -36px;
+    }
+
+    .time {
+      flex-direction: column;
+      margin-block: 32px 24px;
+      height: 103px;
+      gap: 16px;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        justify-content: space-between;
+
+        > div {
+          flex-direction: column;
+          gap: 8px;
+
+          > p {
+            font-size: 12px;
+          }
+          > div {
+            input {
+              width: 140px;
+              height: 48px;
+              border-radius: 10px;
+              padding-inline: 16px 62px;
+              font-size: 13px;
+              letter-spacing: 5px;
+            }
+            .arrow-btn {
+              width: 12px;
+              right: 12px;
+              top: 12px;
+              gap: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .font {
+      margin-block: 24px;
+      max-height: 40px;
+      justify-content: space-between;
+      align-items: center;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        gap: 16px;
+
+        > div {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .color {
+      margin-block: 24px 51px;
+      max-height: 40px;
+      justify-content: space-between;
+      align-items: center;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        gap: 16px;
+
+        > div {
+          width: 40px;
+          height: 40px;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .apply-btn {
+      width: 140px;
+      height: 54px;
+      font-size: 16px;
+      left: calc(50% - 70px);
+      bottom: -27px;
+    }
+  }
+}
+@media (max-width: 399px) {
+  .settings {
+    width: 327px;
+    max-height: 600px;
+    padding-inline: 23px;
+    border-radius: 15px;
+
+    .setting {
+      font-size: 20px;
+      margin-block: 18px 16px;
+      max-height: 35px;
+    }
+
+    .hr.first {
+      width: 327px;
+      left: -23px;
+    }
+
+    .time {
+      flex-direction: column;
+      margin-block: 32px 24px;
+      gap: 16px;
+
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+        text-align: center;
+      }
+
+      > div {
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 8px;
+
+        > div {
+          align-items: center;
+          justify-content: space-between;
+
+          > p {
+            font-size: 12px;
+          }
+          > div {
+            input {
+              width: 140px;
+              height: 40px;
+              border-radius: 10px;
+              padding-inline: 16px 62px;
+              font-size: 13px;
+              letter-spacing: 5px;
+            }
+            .arrow-btn {
+              width: 12px;
+              right: 12px;
+              top: 8px;
+              gap: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .font {
+      margin-block: 24px;
+      max-height: 70px;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+
+      > h2 {
+        font-size: 11px;
+        letter-spacing: 4.2px;
+      }
+
+      > div {
+        gap: 16px;
+
+        > div {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .color {
+      margin-block: 24px 59px;
+      max-height: 70px;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+      > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+      }
+
+      > div {
+        gap: 16px;
+
+        > div {
+          width: 40px;
+          height: 40px;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .apply-btn {
+      width: 140px;
+      height: 54px;
+      font-size: 16px;
+      left: calc(50% - 70px);
+      bottom: -27px;
+    }
   }
 }

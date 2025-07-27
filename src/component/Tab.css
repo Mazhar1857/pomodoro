@@ -1,7 +1,4 @@
 .tab {
-  width: 380px;
-  height: 63px;
-  padding: 10px 7.5px;
   background-color: #161932;
   border-radius: 100vmax;
   position: relative;
@@ -12,14 +9,11 @@
   font-family: var(--font);
 
   .btn {
-    width: 120px;
-    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100vmax;
     font-weight: bold;
-    font-size: 14px;
   }
 
   .title {
@@ -33,5 +27,45 @@
   .long-break {
     color: #d7e0ff;
     opacity: 0.4;
+  }
+}
+
+@media (min-width: 770px) {
+  .tab {
+    width: 380px;
+    height: 63px;
+    padding: 10px 7.5px;
+
+    .btn {
+      width: 120px;
+      height: 48px;
+      font-size: 14px;
+    }
+  }
+}
+@media (min-width: 400px) and (max-width: 769px) {
+  .tab {
+    width: 380px;
+    height: 63px;
+    padding: 10px 7.5px;
+
+    .btn {
+      width: 120px;
+      height: 48px;
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 399px) {
+  .tab {
+    width: 330px;
+    height: 63px;
+    padding: 7.5px 7.5px;
+
+    .btn {
+      width: 105px;
+      height: 48px;
+      font-size: 12px;
+    }
   }
 }

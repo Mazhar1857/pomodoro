@@ -3,8 +3,6 @@
     drop-shadow(50px 50px 100px #121530);
   font-family: var(--font);
   .first-circle {
-    width: 410px;
-    height: 410px;
     border-radius: 100vmax;
     background: linear-gradient(to right, #0e112a, #2e325a);
     position: relative;
@@ -14,8 +12,6 @@
   }
 
   .second-circle {
-    width: 366px;
-    height: 366px;
     border-radius: 100vmax;
     background-color: #161932;
     display: flex;
@@ -24,8 +20,6 @@
   }
 
   .third-circle {
-    width: 339px;
-    height: 339px;
     border-radius: 100vmax;
     background: conic-gradient(var(--color) 0% 80%, transparent 80% 100%);
     display: flex;
@@ -33,8 +27,6 @@
     align-items: center;
   }
   .top-circle {
-    width: 312px;
-    height: 312px;
     border-radius: 100vmax;
     background-color: #161932;
     display: flex;
@@ -44,13 +36,102 @@
 
     > div {
       color: whitesmoke;
-      font-size: 100px;
     }
     > p {
       color: whitesmoke;
-      font-size: 16px;
-      letter-spacing: 15px;
       font-family: inherit;
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  .progress-clock {
+    .first-circle {
+      width: 410px;
+      height: 410px;
+    }
+
+    .second-circle {
+      width: 366px;
+      height: 366px;
+    }
+
+    .third-circle {
+      width: 339px;
+      height: 339px;
+    }
+    .top-circle {
+      width: 312px;
+      height: 312px;
+
+      > div {
+        font-size: 100px;
+      }
+      > p {
+        font-size: 16px;
+        letter-spacing: 15px;
+      }
+    }
+  }
+}
+@media (min-width: 400px) and (max-width: 769px) {
+  .progress-clock {
+    .first-circle {
+      width: 410px;
+      height: 410px;
+    }
+
+    .second-circle {
+      width: 366px;
+      height: 366px;
+    }
+
+    .third-circle {
+      width: 339px;
+      height: 339px;
+    }
+    .top-circle {
+      width: 312px;
+      height: 312px;
+
+      > div {
+        font-size: 100px;
+      }
+      > p {
+        font-size: 16px;
+        letter-spacing: 15px;
+      }
+    }
+  }
+}
+@media (max-width: 399px) {
+  .progress-clock {
+    .first-circle {
+      width: 300px;
+      height: 300px;
+    }
+
+    .second-circle {
+      width: 268px;
+      height: 268px;
+    }
+
+    .third-circle {
+      width: 248px;
+      height: 248px;
+    }
+    .top-circle {
+      width: 228px;
+      height: 228px;
+
+      > div {
+        font-size: 80px;
+        letter-spacing: -5px;
+      }
+      > p {
+        font-size: 14px;
+        letter-spacing: 14px;
+      }
     }
   }
 }
