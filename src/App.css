@@ -1,8 +1,14 @@
 .app {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
   background-color: #1e213f;
+
+  .setting-component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 }
