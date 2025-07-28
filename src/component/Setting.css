@@ -9,6 +9,9 @@
     align-items: center;
     font-weight: bold;
   }
+  .close:hover {
+    cursor: pointer;
+  }
 
   .hr.first {
     position: relative;
