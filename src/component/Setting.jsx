@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Setting.css";
 import CloseIcon from "../svg components/CloseIcon";
 import CheckIcon from "../svg components/CheckIcon";
@@ -7,25 +7,45 @@ import DownArrowIcon from "../svg components/DownArrowIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { themeSliceAction } from "../store/themeSlice";
 import fontSlice, { fontSliceAction } from "../store/fontSlice";
+import { useNavigate } from "react-router-dom";
 
 const Setting = () => {
   const theme = useSelector((store) => store.theme);
   const font = useSelector((store) => store.font);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleTheme = (color) => {
-    dispatch(themeSliceAction.toggleTheme(color));
-  };
+  const [newFont, setNewFont] = useState(font);
+  const [color, setColor] = useState(theme);
 
   const handleFont = (font) => {
-    dispatch(fontSliceAction.toggleFont(font));
+    setNewFont(() => {
+      return { font: font, active: font };
+    });
+  };
+
+  const handleTheme = (color) => {
+    setColor(() => {
+      return { color: color, active: color };
+    });
+  };
+
+  const handleApplyEffect = () => {
+    dispatch(themeSliceAction.toggleTheme(color.color));
+    dispatch(fontSliceAction.toggleFont(newFont.font));
+  };
+
+  const handleNavigation = () => {
+    setNewFont(font);
+    setColor(theme);
+    navigate("/");
   };
 
   return (
     <div className="settings">
       <div className="setting">
         <h1>Settings</h1>
-        <div className="close">
+        <div className="close" onClick={handleNavigation}>
           <CloseIcon />
         </div>
       </div>
@@ -70,19 +90,19 @@ const Setting = () => {
         <h2>FONT</h2>
         <div>
           <div
-            className={`${font.active === "kumbh sans" ? "active" : ""}`}
+            className={`${newFont.active === "kumbh sans" ? "active" : ""}`}
             onClick={() => handleFont("kumbh sans")}
           >
             Aa
           </div>
           <div
-            className={`${font.active === "roboto" ? "active" : ""}`}
+            className={`${newFont.active === "roboto" ? "active" : ""}`}
             onClick={() => handleFont("roboto")}
           >
             Aa
           </div>
           <div
-            className={`${font.active === "space mono" ? "active" : ""}`}
+            className={`${newFont.active === "space mono" ? "active" : ""}`}
             onClick={() => handleFont("space mono")}
           >
             Aa
@@ -94,26 +114,28 @@ const Setting = () => {
         <h2>COLOR</h2>
         <div>
           <div
-            className={`${theme.active === "red" ? "active" : "inactive"}`}
+            className={`${color.active === "red" ? "active" : "inactive"}`}
             onClick={() => handleTheme("red")}
           >
             <CheckIcon />
           </div>
           <div
-            className={`${theme.active === "cyan" ? "active" : "inactive"}`}
+            className={`${color.active === "cyan" ? "active" : "inactive"}`}
             onClick={() => handleTheme("cyan")}
           >
             <CheckIcon />
           </div>
           <div
-            className={`${theme.active === "purple" ? "active" : "inactive"}`}
+            className={`${color.active === "purple" ? "active" : "inactive"}`}
             onClick={() => handleTheme("purple")}
           >
             <CheckIcon />
           </div>
         </div>
       </div>
-      <button className="apply-btn">Apply</button>
+      <button className="apply-btn" onClick={handleApplyEffect}>
+        Apply
+      </button>
     </div>
   );
 };
