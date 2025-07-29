@@ -41,6 +41,9 @@
       color: whitesmoke;
       font-family: inherit;
     }
+    > p:hover {
+      cursor: pointer;
+    }
   }
 }
 
