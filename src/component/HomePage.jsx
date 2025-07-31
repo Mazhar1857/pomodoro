@@ -84,7 +84,7 @@ const HomePage = () => {
         <Logo />
       </div>
       <div className="tab-component">
-        <Tab />
+        <Tab timerMode={timerMode} />
       </div>
       <div className="progress-clock-component">
         <ProgressClock
