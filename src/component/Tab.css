@@ -14,21 +14,18 @@
     align-items: center;
     border-radius: 100vmax;
     font-weight: bold;
+    color: #d7e0ff;
   }
   .btn:hover {
     cursor: pointer;
   }
 
-  .title {
+  .active {
     background-color: var(--color);
     color: #1e213f;
   }
-  .short-break {
-    color: #d7e0ff;
-    opacity: 0.4;
-  }
-  .long-break {
-    color: #d7e0ff;
+
+  .inactive {
     opacity: 0.4;
   }
 }
