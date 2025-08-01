@@ -15,6 +15,9 @@ const HomePage = () => {
   const [timerMode, setTimerMode] = useState("pomodoro");
   const [countdown, setCountdown] = useState({ min: "00", sec: "00" });
   const [round, setRound] = useState(timer.pomodoro.round);
+  const [totalSec, setTotalSec] = useState(timer.pomodoro.totalSecond);
+  const [progress, setProgress] = useState(totalSec);
+  const [progressPercent, setProgressPercent] = useState(100);
 
   useEffect(() => {
     if (isRunning) {
@@ -40,6 +43,7 @@ const HomePage = () => {
             return { min: pre.min, sec: pre.sec - 1 };
           }
         });
+        setProgress((pre) => pre - 1);
       }, 1000);
 
       return () => clearInterval(interval);
@@ -47,32 +51,56 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    if (isRunning) {
-      switch (timerMode) {
-        case "pomodoro":
-          setCountdown({
-            min: timer.pomodoro.min,
-            sec: timer.pomodoro.sec,
-          });
-          break;
-        case "shortBreak":
-          setRound((pre) => pre - 1);
-          setCountdown({
-            min: timer.shortBreak.min,
-            sec: timer.shortBreak.sec,
-          });
-          break;
-        case "longBreak":
-          setRound(timer.pomodoro.round);
-          setCountdown({
-            min: timer.longBreak.min,
-            sec: timer.longBreak.sec,
-          });
-      }
+    setProgressPercent((progress / totalSec) * 100);
+  }, [progress, totalSec]);
+
+  useEffect(() => {
+    switch (timerMode) {
+      case "pomodoro":
+        setCountdown({
+          min: timer.pomodoro.min,
+          sec: timer.pomodoro.sec,
+        });
+        break;
+      case "shortBreak":
+        setRound((pre) => pre - 1);
+        setCountdown({
+          min: timer.shortBreak.min,
+          sec: timer.shortBreak.sec,
+        });
+        break;
+      case "longBreak":
+        setRound(timer.pomodoro.round);
+        setCountdown({
+          min: timer.longBreak.min,
+          sec: timer.longBreak.sec,
+        });
     }
 
+    setTotalSec(() => {
+      switch (timerMode) {
+        case "pomodoro":
+          return timer.pomodoro.totalSecond;
+        case "shortBreak":
+          return timer.shortBreak.totalSecond;
+        case "longBreak":
+          return timer.longBreak.totalSecond;
+      }
+    });
+
+    setProgress(() => {
+      switch (timerMode) {
+        case "pomodoro":
+          return timer.pomodoro.totalSecond;
+        case "shortBreak":
+          return timer.shortBreak.totalSecond;
+        case "longBreak":
+          return timer.longBreak.totalSecond;
+      }
+    });
+
     console.log(timerMode, countdown);
-  }, [timerMode, isRunning]);
+  }, [timerMode]);
 
   const handleNavigation = () => {
     navigate("/setting");
@@ -91,6 +119,7 @@ const HomePage = () => {
           countdown={countdown}
           isRunning={isRunning}
           setIsRunning={setIsRunning}
+          progressPercent={progressPercent}
         />
       </div>
       <div className="setting-icon" onClick={handleNavigation}>
