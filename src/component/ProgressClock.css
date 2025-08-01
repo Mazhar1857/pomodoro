@@ -21,7 +21,10 @@
 
   .third-circle {
     border-radius: 100vmax;
-    background: conic-gradient(var(--color) 0% 80%, transparent 80% 100%);
+    background: conic-gradient(
+      var(--color) 0% var(--totalSec),
+      transparent var(--totalSec) 100%
+    );
     display: flex;
     justify-content: center;
     align-items: center;
