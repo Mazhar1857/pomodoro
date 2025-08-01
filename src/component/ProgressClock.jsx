@@ -2,7 +2,12 @@ import "./ProgressClock.css";
 
 import React, { useEffect, useState } from "react";
 
-const ProgressClock = ({ countdown, isRunning, setIsRunning }) => {
+const ProgressClock = ({
+  countdown,
+  isRunning,
+  setIsRunning,
+  progressPercent,
+}) => {
   const handleStartPauseBtn = () => {
     setIsRunning((pre) => {
       return pre ? false : true;
@@ -10,7 +15,10 @@ const ProgressClock = ({ countdown, isRunning, setIsRunning }) => {
   };
 
   return (
-    <div className="progress-clock">
+    <div
+      className="progress-clock"
+      style={{ "--totalSec": `${progressPercent}%` }}
+    >
       <div className="first-circle">
         <div className="second-circle">
           <div className="third-circle">
