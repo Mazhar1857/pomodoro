@@ -11,4 +11,12 @@
     justify-content: center;
     min-height: 100vh;
   }
+
+  .setting-component.inactive {
+    display: none;
+  }
+
+  .home-component.inactive {
+    display: none;
+  }
 }

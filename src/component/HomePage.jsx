@@ -5,11 +5,9 @@ import React, { useEffect, useState } from "react";
 import Tab from "./Tab";
 import ProgressClock from "./ProgressClock";
 import SettingIcon from "../svg components/SettingIcon";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const HomePage = () => {
-  const navigate = useNavigate();
+const HomePage = ({ setActivePage }) => {
   const timer = useSelector((store) => store.timer);
   const [isRunning, setIsRunning] = useState(false);
   const [timerMode, setTimerMode] = useState("pomodoro");
@@ -102,10 +100,6 @@ const HomePage = () => {
     console.log(timerMode, countdown);
   }, [timerMode]);
 
-  const handleNavigation = () => {
-    navigate("/setting");
-  };
-
   return (
     <div className="home-page">
       <div className="logo">
@@ -122,7 +116,7 @@ const HomePage = () => {
           progressPercent={progressPercent}
         />
       </div>
-      <div className="setting-icon" onClick={handleNavigation}>
+      <div className="setting-icon" onClick={() => setActivePage("setting")}>
         <SettingIcon />
       </div>
     </div>

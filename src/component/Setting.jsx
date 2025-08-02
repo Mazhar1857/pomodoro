@@ -7,14 +7,11 @@ import DownArrowIcon from "../svg components/DownArrowIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { themeSliceAction } from "../store/themeSlice";
 import fontSlice, { fontSliceAction } from "../store/fontSlice";
-import { useNavigate } from "react-router-dom";
 
-const Setting = () => {
+const Setting = ({ setActivePage }) => {
   const theme = useSelector((store) => store.theme);
   const font = useSelector((store) => store.font);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const [newFont, setNewFont] = useState(font);
   const [color, setColor] = useState(theme);
 
@@ -35,17 +32,17 @@ const Setting = () => {
     dispatch(fontSliceAction.toggleFont(newFont.font));
   };
 
-  const handleNavigation = () => {
+  const handleActivePage = () => {
     setNewFont(font);
     setColor(theme);
-    navigate("/");
+    setActivePage("home");
   };
 
   return (
     <div className="settings">
       <div className="setting">
         <h1>Settings</h1>
-        <div className="close" onClick={handleNavigation}>
+        <div className="close" onClick={handleActivePage}>
           <CloseIcon />
         </div>
       </div>
