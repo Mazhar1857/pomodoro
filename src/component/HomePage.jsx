@@ -5,14 +5,16 @@ import React, { useEffect, useState } from "react";
 import Tab from "./Tab";
 import ProgressClock from "./ProgressClock";
 import SettingIcon from "../svg components/SettingIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { timerAction } from "../store/timerSlice";
 
 const HomePage = ({ setActivePage }) => {
   const timer = useSelector((store) => store.timer);
+  const dispatch = useDispatch();
   const [isRunning, setIsRunning] = useState(false);
   const [timerMode, setTimerMode] = useState("pomodoro");
   const [countdown, setCountdown] = useState({ min: "00", sec: "00" });
-  const [round, setRound] = useState(timer.pomodoro.round);
+  const [round, setRound] = useState(timer.round);
   const [totalSec, setTotalSec] = useState(timer.pomodoro.totalSecond);
   const [progress, setProgress] = useState(totalSec);
   const [progressPercent, setProgressPercent] = useState(100);
@@ -31,6 +33,8 @@ const HomePage = ({ setActivePage }) => {
               setTimerMode("longBreak");
             } else if (timerMode === "longBreak") {
               setTimerMode("pomodoro");
+              dispatch(timerAction.setRounds(timer.round));
+              setRound(timer.round);
             }
             return pre;
           }
@@ -96,8 +100,6 @@ const HomePage = ({ setActivePage }) => {
           return timer.longBreak.totalSecond;
       }
     });
-
-    console.log(timerMode, countdown);
   }, [timerMode]);
 
   return (
