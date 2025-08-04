@@ -57,7 +57,6 @@
             flex-direction: column;
           }
 
-          input:hover,
           .arrow-btn:hover {
             cursor: pointer;
           }
