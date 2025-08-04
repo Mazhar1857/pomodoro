@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Setting.css";
 import CloseIcon from "../svg components/CloseIcon";
 import CheckIcon from "../svg components/CheckIcon";
@@ -7,13 +7,16 @@ import DownArrowIcon from "../svg components/DownArrowIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { themeSliceAction } from "../store/themeSlice";
 import fontSlice, { fontSliceAction } from "../store/fontSlice";
+import { timerAction } from "../store/timerSlice";
 
 const Setting = ({ setActivePage }) => {
+  const times = useSelector((store) => store.timer);
   const theme = useSelector((store) => store.theme);
   const font = useSelector((store) => store.font);
   const dispatch = useDispatch();
   const [newFont, setNewFont] = useState(font);
   const [color, setColor] = useState(theme);
+  const [newTimes, setTimes] = useState(times);
 
   const handleFont = (font) => {
     setNewFont(() => {
@@ -27,9 +30,28 @@ const Setting = ({ setActivePage }) => {
     });
   };
 
+  const addTimes = (e) => {
+    if (e.target.value > 0) {
+      const min = parseInt(e.target.value);
+      const sec = parseInt((e.target.value - Math.trunc(e.target.value)) * 60);
+
+      setTimes((pre) => {
+        return {
+          ...pre,
+          [e.target.name]: {
+            min: min,
+            sec: sec,
+            totalSecond: min * 60 + sec,
+          },
+        };
+      });
+    }
+  };
+
   const handleApplyEffect = () => {
     dispatch(themeSliceAction.toggleTheme(color.color));
     dispatch(fontSliceAction.toggleFont(newFont.font));
+    dispatch(timerAction.addTime(newTimes));
   };
 
   const handleActivePage = () => {
@@ -53,7 +75,7 @@ const Setting = ({ setActivePage }) => {
           <div>
             <p>pomodoro</p>
             <div>
-              <input type="text" />
+              <input type="text" name="pomodoro" onChange={addTimes} />
               <div className="arrow-btn">
                 <UpArrowIcon />
                 <DownArrowIcon />
@@ -63,7 +85,7 @@ const Setting = ({ setActivePage }) => {
           <div>
             <p>short break</p>
             <div>
-              <input type="text" />
+              <input type="text" name="shortBreak" onChange={addTimes} />
               <div className="arrow-btn">
                 <UpArrowIcon />
                 <DownArrowIcon />
@@ -73,7 +95,7 @@ const Setting = ({ setActivePage }) => {
           <div>
             <p>long break</p>
             <div>
-              <input type="text" />
+              <input type="text" name="longBreak" onChange={addTimes} />
               <div className="arrow-btn">
                 <UpArrowIcon />
                 <DownArrowIcon />
