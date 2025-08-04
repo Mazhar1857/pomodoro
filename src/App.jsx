@@ -13,10 +13,6 @@ function App() {
     "--font": font["font"],
   };
 
-  useEffect(() => {
-    console.log(activePage);
-  }, [activePage]);
-
   return (
     <div className="app" style={style}>
       <div
