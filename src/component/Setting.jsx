@@ -45,6 +45,17 @@ const Setting = ({ setActivePage }) => {
           },
         };
       });
+    } else if (e.target.value === "") {
+      setTimes((pre) => {
+        return {
+          ...pre,
+          [e.target.name]: {
+            min: "",
+            sec: "",
+            totalSecond: "",
+          },
+        };
+      });
     }
   };
 
@@ -75,7 +86,12 @@ const Setting = ({ setActivePage }) => {
           <div>
             <p>pomodoro</p>
             <div>
-              <input type="text" name="pomodoro" onChange={addTimes} />
+              <input
+                type="text"
+                name="pomodoro"
+                value={newTimes && newTimes.pomodoro.min}
+                onChange={addTimes}
+              />
               <div className="arrow-btn">
                 <UpArrowIcon />
                 <DownArrowIcon />
@@ -85,7 +101,12 @@ const Setting = ({ setActivePage }) => {
           <div>
             <p>short break</p>
             <div>
-              <input type="text" name="shortBreak" onChange={addTimes} />
+              <input
+                type="text"
+                name="shortBreak"
+                value={newTimes && newTimes.shortBreak.min}
+                onChange={addTimes}
+              />
               <div className="arrow-btn">
                 <UpArrowIcon />
                 <DownArrowIcon />
@@ -95,7 +116,12 @@ const Setting = ({ setActivePage }) => {
           <div>
             <p>long break</p>
             <div>
-              <input type="text" name="longBreak" onChange={addTimes} />
+              <input
+                type="text"
+                name="longBreak"
+                value={newTimes && newTimes.longBreak.min}
+                onChange={addTimes}
+              />
               <div className="arrow-btn">
                 <UpArrowIcon />
                 <DownArrowIcon />
