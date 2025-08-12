@@ -100,7 +100,7 @@ const HomePage = ({ setActivePage }) => {
           return timer.longBreak.totalSecond;
       }
     });
-  }, [timerMode]);
+  }, [timerMode, timer]);
 
   return (
     <div className="home-page">
