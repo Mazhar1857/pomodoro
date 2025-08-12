@@ -50,9 +50,9 @@ const Setting = ({ setActivePage }) => {
         return {
           ...pre,
           [e.target.name]: {
-            min: "",
-            sec: "",
-            totalSecond: "",
+            min: 0,
+            sec: 0,
+            totalSecond: 0,
           },
         };
       });
@@ -70,7 +70,6 @@ const Setting = ({ setActivePage }) => {
     setColor(theme);
     setActivePage("home");
   };
-
   return (
     <div className="settings">
       <div className="setting">
@@ -89,7 +88,7 @@ const Setting = ({ setActivePage }) => {
               <input
                 type="text"
                 name="pomodoro"
-                value={newTimes && newTimes.pomodoro.min}
+                value={newTimes.pomodoro.min}
                 onChange={addTimes}
               />
               <div className="arrow-btn">
@@ -104,7 +103,7 @@ const Setting = ({ setActivePage }) => {
               <input
                 type="text"
                 name="shortBreak"
-                value={newTimes && newTimes.shortBreak.min}
+                value={newTimes.shortBreak.min}
                 onChange={addTimes}
               />
               <div className="arrow-btn">
@@ -119,7 +118,7 @@ const Setting = ({ setActivePage }) => {
               <input
                 type="text"
                 name="longBreak"
-                value={newTimes && newTimes.longBreak.min}
+                value={newTimes.longBreak.min}
                 onChange={addTimes}
               />
               <div className="arrow-btn">
