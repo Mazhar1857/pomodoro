@@ -2,17 +2,17 @@ export const pomodoroTimers = {
   pomodoro: {
     min: 37,
     sec: 0,
-    totalSecond: 37 * 60,
+    totalSecond: 2220,
   },
   shortBreak: {
     min: 5,
     sec: 0,
-    totalSecond: 5 * 60,
+    totalSecond: 300,
   },
   longBreak: {
     min: 10,
     sec: 0,
-    totalSecond: 10 * 60,
+    totalSecond: 600,
   },
   round: 2,
 };
