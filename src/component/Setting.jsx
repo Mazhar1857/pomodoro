@@ -63,12 +63,14 @@ const Setting = ({ setActivePage }) => {
     dispatch(themeSliceAction.toggleTheme(color.color));
     dispatch(fontSliceAction.toggleFont(newFont.font));
     dispatch(timerAction.addTime(newTimes));
+    setActivePage("home");
   };
 
   const handleActivePage = () => {
     setNewFont(font);
     setColor(theme);
     setActivePage("home");
+    setTimes(times);
   };
   return (
     <div className="settings">
