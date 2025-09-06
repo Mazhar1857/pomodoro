@@ -16,8 +16,7 @@ const HomePage = ({ setActivePage }) => {
   const [countdown, setCountdown] = useState({ min: "00", sec: "00" });
   const [round, setRound] = useState(timer.round);
   const [totalSec, setTotalSec] = useState(timer.pomodoro.totalSecond);
-  const [progress, setProgress] = useState(totalSec);
-  const [progressPercent, setProgressPercent] = useState(100);
+  const [progress, setProgress] = useState(100);
 
   useEffect(() => {
     if (isRunning) {
@@ -45,16 +44,11 @@ const HomePage = ({ setActivePage }) => {
             return { min: pre.min, sec: pre.sec - 1 };
           }
         });
-        setProgress((pre) => pre - 1);
       }, 1000);
 
       return () => clearInterval(interval);
     }
-  });
-
-  useEffect(() => {
-    setProgressPercent((progress / totalSec) * 100);
-  }, [progress, totalSec]);
+  }, [isRunning, timerMode]);
 
   useEffect(() => {
     switch (timerMode) {
@@ -63,6 +57,7 @@ const HomePage = ({ setActivePage }) => {
           min: timer.pomodoro.min,
           sec: timer.pomodoro.sec,
         });
+        setProgress(100);
         break;
       case "shortBreak":
         setRound((pre) => pre - 1);
@@ -70,6 +65,7 @@ const HomePage = ({ setActivePage }) => {
           min: timer.shortBreak.min,
           sec: timer.shortBreak.sec,
         });
+        setProgress(100);
         break;
       case "longBreak":
         setRound(timer.pomodoro.round);
@@ -77,6 +73,7 @@ const HomePage = ({ setActivePage }) => {
           min: timer.longBreak.min,
           sec: timer.longBreak.sec,
         });
+        setProgress(100);
     }
 
     setTotalSec(() => {
@@ -90,17 +87,27 @@ const HomePage = ({ setActivePage }) => {
       }
     });
 
-    setProgress(() => {
-      switch (timerMode) {
-        case "pomodoro":
-          return timer.pomodoro.totalSecond;
-        case "shortBreak":
-          return timer.shortBreak.totalSecond;
-        case "longBreak":
-          return timer.longBreak.totalSecond;
-      }
-    });
+    // setProgress(() => {
+    //   switch (timerMode) {
+    //     case "pomodoro":
+    //       return timer.pomodoro.totalSecond;
+    //     case "shortBreak":
+    //       return timer.shortBreak.totalSecond;
+    //     case "longBreak":
+    //       return timer.longBreak.totalSecond;
+    //   }
+    // });
   }, [timerMode, timer]);
+
+  useEffect(() => {
+    if (isRunning) {
+      const progressCountDown = setInterval(() => {
+        setProgress((pre) => pre - 1 / 20);
+      }, (totalSec * 1000) / 100 / 20);
+
+      return () => clearInterval(progressCountDown);
+    }
+  }, [totalSec, isRunning]);
 
   return (
     <div className="home-page">
@@ -115,7 +122,7 @@ const HomePage = ({ setActivePage }) => {
           countdown={countdown}
           isRunning={isRunning}
           setIsRunning={setIsRunning}
-          progressPercent={progressPercent}
+          progressPercent={progress}
         />
       </div>
       <div className="setting-icon" onClick={() => setActivePage("setting")}>
